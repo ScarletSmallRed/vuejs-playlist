@@ -1,9 +1,10 @@
 <template>
     <footer>
-        <p>{{ copyright }} {{title}}</p>
+        <p>{{ copyright }} {{title1}}</p>
     </footer>
 </template>
 <script>
+import { bus } from "./../main.js";
 export default {
   props: {
     title: {
@@ -13,8 +14,15 @@ export default {
   },
   data() {
     return {
-      copyright: "Copyright 2017 Vue Ninjas"
+      copyright: "Copyright 2017 Vue Ninjas",
+      title1: "Title 1"
     };
+  },
+  created() {
+    bus.$on("titleChanged", data => {
+      console.log("new title:", data)
+      this.title1 = data;
+    });
   }
 };
 </script>
