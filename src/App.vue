@@ -1,8 +1,11 @@
 <template>
   <div>
-    <app-header></app-header>
-    <app-ninjas :ninjas="ninjas"></app-ninjas>
-    <app-footer></app-footer>
+    <app-header
+      :title="title"
+      @changeTitle="updateTitle"></app-header>
+    <app-ninjas
+      :ninjas="ninjas"></app-ninjas>
+    <app-footer :title="title"></app-footer>
   </div>
 </template>
 
@@ -30,8 +33,11 @@ export default {
     };
   },
   methods: {
-    greeting: function() {
+    greeting () {
       return "heeey cowboy";
+    },
+    updateTitle (updatedTitle) {
+      this.title = updatedTitle;
     }
   }
 };

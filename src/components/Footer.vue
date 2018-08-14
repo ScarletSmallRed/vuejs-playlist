@@ -1,24 +1,30 @@
 <template>
     <footer>
-        <p>{{ copyright }}</p>
+        <p>{{ copyright }} {{title}}</p>
     </footer>
 </template>
 <script>
 export default {
-    data(){
-        return{
-            copyright: 'Copyright 2017 Vue Ninjas'
-        }
+  props: {
+    title: {
+      type: String,
+      required: true
     }
-}
+  },
+  data() {
+    return {
+      copyright: "Copyright 2017 Vue Ninjas"
+    };
+  }
+};
 </script>
 <style scoped>
-footer{
-    background: #222;
-    padding: 6px;
+footer {
+  background: #222;
+  padding: 6px;
 }
-p{
-        color: lightgreen;
-        text-align: center;
+p {
+  color: lightgreen;
+  text-align: center;
 }
 </style>
