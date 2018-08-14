@@ -1,16 +1,20 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <p>{{ greeting() }}</p>
-    <ninjas></ninjas>
+    <app-header></app-header>
+    <app-ninjas></app-ninjas>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import ninjas from "./Ninjas";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Ninjas from "./components/Ninjas"
 export default {
   components: {
-    ninjas
+    "app-header": Header,
+    "app-footer": Footer,
+    "app-ninjas": Ninjas
   },
   data() {
     return {
