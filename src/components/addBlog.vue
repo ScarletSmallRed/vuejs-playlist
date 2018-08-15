@@ -1,7 +1,7 @@
 <template>
     <div id="add-blog">
         <h2>Add a New Blog Post</h2>
-        <form>
+        <form v-if="!submitted">
             <label>Blog Title:</label>
             <input type="text" v-model.lazy="blog.title" required />
             <label>Blog Content:</label>
@@ -23,7 +23,12 @@
                   v-for="author in authors"
                   :key="author">{{ author }}</option>
             </select>
+            <hr />
+            <button @click.prevent="postTest">Add Blog</button>
         </form>
+        <div v-if="submitted">
+            <h3>Thanks for adding your post</h3>
+        </div>
         <div id="preview">
             <h3>Preview blog</h3>
             <p>Blog title: {{ blog.title }}</p>
@@ -48,10 +53,31 @@ export default {
         content: "",
         categories: []
       },
-      authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator']
+      authors: ["The Net Ninja", "The Angular Avenger", "The Vue Vindicator"],
+      submitted: false
     };
   },
-  methods: {}
+  methods: {
+    postTest() {
+      this.$axios({
+        method: "post",
+        url: "/posts",
+        baseURL: "http://jsonplaceholder.typicode.com/",
+        data: {
+          title: this.blog.title,
+          body: this.blog.content,
+          userId: 1
+        }
+      })
+        .then(response => {
+          console.log("response:", response);
+          this.submitted = true;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 
