@@ -1,16 +1,19 @@
 <template>
   <div>
-    <show-blogs></show-blogs>
+    <app-header></app-header>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import addBlog from "./components/addBlog"
 import showBlogs from "./components/showBlogs"
+import header from "./components/Header"
 export default {
   components: {
     "add-blog": addBlog,
-    "show-blogs": showBlogs
+    "show-blogs": showBlogs,
+    "app-header": header
   },
   data() {
     return {

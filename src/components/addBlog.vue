@@ -70,7 +70,6 @@ export default {
         }
       })
         .then(response => {
-          console.log("response:", response);
           this.submitted = true;
         })
         .catch(error => {
