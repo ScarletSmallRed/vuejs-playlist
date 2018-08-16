@@ -51,7 +51,8 @@ export default {
       blog: {
         title: "",
         content: "",
-        categories: []
+        categories: [],
+        author: ""
       },
       authors: ["The Net Ninja", "The Angular Avenger", "The Vue Vindicator"],
       submitted: false
@@ -61,12 +62,10 @@ export default {
     postTest() {
       this.$axios({
         method: "post",
-        url: "/posts",
-        baseURL: "http://jsonplaceholder.typicode.com/",
+        url: "/blogs",
+        baseURL: "http://localhost:4000",
         data: {
-          title: this.blog.title,
-          body: this.blog.content,
-          userId: 1
+          blog: this.blog
         }
       })
         .then(response => {

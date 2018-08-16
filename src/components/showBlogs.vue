@@ -3,10 +3,10 @@
         <h1>All Blog Articles</h1>
         <input type="text" v-model="search" placeholder="search blogs" />
         <div v-for="blog in filteredBlogs" class="single-blog" :key="blog.title">
-          <router-link :to="'/blog/' + blog.id">
+          <router-link :to="'/blog/' + blog._id">
             <h2 v-rainbow>{{ blog.title | toUpperCase }}</h2>
           </router-link>
-          <article>{{ blog.body }}</article>
+          <article>{{ blog.content }}</article>
         </div>
     </div>
 </template>
@@ -23,10 +23,11 @@ export default {
   created() {
     this.$axios({
       method: "get",
-      url: "/posts",
-      baseURL: "http://jsonplaceholder.typicode.com/"
+      url: "/blogs",
+      baseURL: "http://localhost:4000/"
     }).then(res => {
-      this.blogs = res.data.slice(0, 10);
+      console.log("res:", res)
+      this.blogs = res.data.docs.slice(0, 10);
     });
   },
   filters: {

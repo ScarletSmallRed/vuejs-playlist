@@ -1,7 +1,7 @@
 <template>
     <div id="single-blog">
         <h1>{{ blog.title }}</h1>
-        <article>{{ blog.body }}</article>
+        <article>{{ blog.content }}</article>
     </div>
 </template>
 
@@ -15,13 +15,14 @@ export default {
     };
   },
   created() {
+    console.log("id:", this.$route.params)
     this.$axios({
       method: "get",
-      baseURL: "http://jsonplaceholder.typicode.com/",
-      url: `/posts/${this.id}`
+      baseURL: "http://localhost:4000",
+      url: `/blogs/${this.id}`
     })
       .then(res => {
-        this.blog = res.data
+        this.blog = res.data.doc
       })
   }
 };
