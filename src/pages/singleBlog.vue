@@ -15,7 +15,6 @@ export default {
     };
   },
   created() {
-    console.log("id:", this.$route.params)
     this.$axios({
       method: "get",
       baseURL: "http://localhost:4000",

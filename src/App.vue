@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import addBlog from "./components/addBlog"
-import showBlogs from "./components/showBlogs"
+import addBlog from "./pages/addBlog"
+import showBlogs from "./pages/showBlogs"
 import header from "./components/Header"
 export default {
   components: {

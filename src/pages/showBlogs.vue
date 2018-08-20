@@ -26,7 +26,6 @@ export default {
       url: "/blogs",
       baseURL: "http://localhost:4000/"
     }).then(res => {
-      console.log("res:", res)
       this.blogs = res.data.docs.slice(0, 10);
     });
   },
